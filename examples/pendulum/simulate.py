@@ -1,6 +1,8 @@
 """Pendulum experiment using MuJoCo directly.
 
 Usage (Mac):  .venv/bin/mjpython simulate.py --viewer --controller pd
+Follow cart (default):  --camera track
+Disable follow: --camera free
 Usage (headless): .venv/bin/python simulate.py --controller pd
 """
 import argparse
@@ -26,6 +28,8 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--controller', choices=['none', 'pd'], default='pd')
     p.add_argument('--viewer', action='store_true')
+    p.add_argument('--camera', choices=['track', 'free'], default='track',
+                   help='tracking camera follows the cart when --viewer is used')
     p.add_argument('--seconds', type=float, default=12.0)
     p.add_argument('--angle', type=float, default=0.14, help='initial pole lean (radians)')
     args = p.parse_args()
@@ -51,6 +55,21 @@ def main():
                       f'theta={data.qpos[1]:+.3f}rad force={data.ctrl[0]:+.1f}N')
     if args.viewer:
         with mujoco.viewer.launch_passive(model, data) as viewer:
+            if args.camera == 'track':
+                # The cart body moves along x. A tracking camera updates its
+                # look-at point as the cart moves, keeping the pole in frame.
+                cart_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, 'cart')
+                if cart_id < 0:
+                    raise RuntimeError("Body 'cart' not found in pendulum.xml")
+                # MuJoCo requires the viewer lock when editing camera state.
+                with viewer.lock():
+                    viewer.cam.type = mujoco.mjtCamera.mjCAMERA_TRACKING
+                    viewer.cam.trackbodyid = cart_id
+                    viewer.cam.distance = 2.7
+                    viewer.cam.azimuth = 90.0    # approximately side-on to x motion
+                    viewer.cam.elevation = -12.0
+                viewer.sync()
+                print('Camera tracking cart body; --camera free disables following.')
             run(viewer)
     else:
         run()

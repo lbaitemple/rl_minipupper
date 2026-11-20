@@ -16,3 +16,7 @@ Headless test:
 ```bash
 /path/to/your/mujoco/.venv/bin/python examples/pendulum/simulate.py --controller pd --seconds 2
 ```
+
+## Viewer camera tracking
+
+`simulate.py` now supports `--camera track` (default) and `--camera free` with `--viewer`. Tracking uses `mjCAMERA_TRACKING` and the model's `cart` body, so the cart and pendulum remain in the viewer as the cart moves horizontally.
