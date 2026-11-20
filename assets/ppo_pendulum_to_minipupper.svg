@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 425" role="img" aria-label="The same PPO actor critic design for inverted pendulum and Mini Pupper: four state values to one continuous action versus 45 or 450 observations to twelve servo actions.">
+<rect width="1080" height="425" rx="18" fill="#f7fbff"/>
+<text x="30" y="43" font-size="24" font-weight="bold" font-family="Arial,sans-serif" fill="#183c5d">Same PPO idea, different tensor dimensions</text>
+<rect x="28" y="72" width="1024" height="148" rx="14" fill="#e5f4ff" stroke="#9ec6e6" stroke-width="2"/>
+<text x="46" y="99" font-family="Arial,sans-serif" font-size="20" fill="#23456a" font-weight="bold">Cart-pole: 4 observations, 1 action</text>
+<rect x="48" y="124" width="172" height="60" rx="8" fill="white" stroke="#7daee2"/><text x="134" y="146" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#255171">[x, θ, ẋ, θ̇]</text><text x="134" y="168" font-size="17" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" fill="#255171">(batch, 4)</text>
+<path d="M220 154 H286" stroke="#48779e" stroke-width="3"/><polygon points="286,154 276,149 276,159" fill="#48779e"/>
+<rect x="287" y="124" width="430" height="60" rx="9" fill="#d5eedf" stroke="#83b7a0"/><text x="502" y="149" font-size="18" text-anchor="middle" font-family="Arial,sans-serif" fill="#23583b">Actor MLP 4 → 64 → 64 → 1</text><text x="502" y="170" font-size="14" text-anchor="middle" font-family="Arial,sans-serif" fill="#23583b">Gaussian mean + learned standard deviation</text>
+<path d="M717 154 H779" stroke="#48779e" stroke-width="3"/><polygon points="779,154 769,149 769,159" fill="#48779e"/>
+<rect x="780" y="124" width="250" height="60" rx="9" fill="white" stroke="#d3a872"/><text x="905" y="147" font-size="18" text-anchor="middle" font-family="Arial,sans-serif" fill="#835a21">1 action → 1 force</text><text x="905" y="169" font-size="14" text-anchor="middle" font-family="Arial,sans-serif" fill="#835a21">cart_actuator</text>
+<rect x="28" y="239" width="1024" height="165" rx="14" fill="#f5f0ff" stroke="#c7b7e7" stroke-width="2"/>
+<text x="46" y="267" font-size="20" font-weight="bold" font-family="Arial,sans-serif" fill="#514174">Mini Pupper: 45 per frame, 12 actions</text>
+<rect x="48" y="291" width="172" height="64" rx="8" fill="white" stroke="#b3a1d2"/><text x="134" y="316" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#514174">(batch, 45)</text><text x="134" y="338" font-size="14" text-anchor="middle" font-family="Arial,sans-serif" fill="#514174">or (batch, 450)</text>
+<path d="M220 321 H286" stroke="#7965aa" stroke-width="3"/><polygon points="286,321 276,316 276,326" fill="#7965aa"/>
+<rect x="287" y="291" width="430" height="64" rx="9" fill="#e6ddf8" stroke="#b09bdb"/><text x="502" y="315" font-size="18" text-anchor="middle" font-family="Arial,sans-serif" fill="#514174">Example actor MLP 45 → 128 → 128 → 12</text><text x="502" y="337" font-size="14" text-anchor="middle" font-family="Arial,sans-serif" fill="#514174">Illustrative widths — inspect config for actual policy</text>
+<path d="M717 321 H779" stroke="#7965aa" stroke-width="3"/><polygon points="779,321 769,316 769,326" fill="#7965aa"/>
+<rect x="780" y="291" width="250" height="64" rx="9" fill="white" stroke="#b3a1d2"/><text x="905" y="315" font-size="18" text-anchor="middle" font-family="Arial,sans-serif" fill="#514174">12 actions</text><text x="905" y="337" font-size="14" text-anchor="middle" font-family="Arial,sans-serif" fill="#514174">→ limit / scale → 12 servos</text>
+<text x="540" y="391" font-size="14" font-family="Arial,sans-serif" text-anchor="middle" fill="#695a8c">Both also have a critic that outputs ONE value estimate during training.</text>
+</svg>

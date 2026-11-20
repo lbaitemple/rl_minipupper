@@ -1,7 +1,17 @@
-# Upload package to GitHub
+# Publish this course on GitHub
 
-This environment does not have authorized GitHub write access. Use GitHub's **Add file → Upload files** in your own repository and upload the extracted files (GitHub does not unpack a zip automatically), or use the CLI steps in README. Do not attempt to upload only the ZIP and expect GitHub Pages to render its contents.
+GitHub publishing has not been performed. Connect your GitHub account in ChatGPT or publish manually.
 
-For GitHub Pages, place `index.html` in the chosen published folder (such as `/docs`) and select the corresponding Pages source. Keep the Colab notebook linked as a normal repo file.
+Example local commands from the extracted folder:
 
-If contributing to upstream, fork it first and open a pull request unless you have write permission.
+```bash
+git init
+git add .
+git commit -m "Add pendulum-first MuJoCo RL course with ROS2 integration"
+# Create a repository on GitHub and add the URL as origin, then:
+# git remote add origin https://github.com/YOUR-USER/YOUR-REPO.git
+# git branch -M main
+# git push -u origin main
+```
+
+Never commit trained models or secrets unintentionally. The example model output folder is ignored by the included .gitignore.

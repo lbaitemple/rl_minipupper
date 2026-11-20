@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 235" role="img" aria-label="The ROS 2 pendulum control pipeline from joint states to an observation vector, a PPO policy, force command topic, and MuJoCo physics.">
+<rect width="1060" height="235" rx="18" fill="#f9fbfe"/>
+<text x="22" y="39" font-size="22" font-weight="bold" fill="#183c5d" font-family="Arial,sans-serif">ROS 2: the PPO actor becomes a controller node</text>
+<g font-family="Arial,sans-serif" font-size="16" text-anchor="middle" font-weight="bold">
+<rect x="16" y="76" rx="12" width="182" height="89" fill="#e4f1fd" stroke="#8bb6dd"/><text x="107" y="110" fill="#214668">MuJoCo bridge</text><text x="107" y="135" fill="#214668" font-size="13">/pendulum/joint_states</text>
+<rect x="239" y="76" rx="12" width="182" height="89" fill="#e4f1fd" stroke="#8bb6dd"/><text x="330" y="110" fill="#214668">Build observation</text><text x="330" y="135" fill="#214668" font-size="13">[x, θ, ẋ, θ̇]</text>
+<rect x="462" y="76" rx="12" width="160" height="89" fill="#e4f3e8" stroke="#80b89c"/><text x="542" y="110" fill="#26563f">PPO actor</text><text x="542" y="135" fill="#26563f" font-size="13">model.predict(obs)</text>
+<rect x="663" y="76" rx="12" width="170" height="89" fill="#fff0db" stroke="#d0a66e"/><text x="748" y="110" fill="#765021">Force command</text><text x="748" y="135" fill="#765021" font-size="13">/pendulum/force</text>
+<rect x="874" y="76" rx="12" width="171" height="89" fill="#f1e8fc" stroke="#b09acb"/><text x="959" y="109" fill="#523e75">data.ctrl[0]</text><text x="959" y="135" fill="#523e75" font-size="13">mj_step()</text>
+</g>
+<g stroke="#396388" stroke-width="3" fill="none"><path d="M198 120 H239 M421 120 H462 M622 120 H663 M833 120 H874"/></g>
+<g fill="#396388"><path d="M239 120 l-11 -6 v12 z M462 120 l-11 -6 v12 z M663 120 l-11 -6 v12 z M874 120 l-11 -6 v12 z"/></g>
+<path d="M959 166 V201 H106 V166" stroke="#527697" stroke-width="2.5" fill="none" stroke-dasharray="8 5"/>
+<text x="533" y="222" font-family="Arial,sans-serif" font-size="14" text-anchor="middle" fill="#4c6784">The bridge publishes the next joint state; the policy loop repeats. The critic is not required for inference.</text>
+</svg>

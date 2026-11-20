@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 565" role="img" aria-label="Four pendulum observations feed separate actor and critic networks. The actor outputs a Gaussian distribution for one force action; the critic predicts one scalar value. PPO updates both networks during training.">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6 Z" fill="#406184"/></marker></defs>
+<rect width="1120" height="565" rx="18" fill="#f8fbff"/>
+<text x="37" y="44" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#183c5d">PPO = two neural networks + an optimization rule</text>
+<rect x="25" y="142" width="203" height="196" rx="14" fill="#dcecff" stroke="#689bc6" stroke-width="2"/>
+<text x="126" y="173" font-family="Arial,sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#163757">Observation o<tspan baseline-shift="sub" font-size="12">t</tspan></text>
+<text x="126" y="204" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#163757">x, θ, ẋ, θ̇</text>
+<text x="126" y="235" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#163757">shape: (4,)</text>
+<text x="126" y="263" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" fill="#345774">MuJoCo qpos / qvel</text>
+<text x="126" y="293" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" fill="#345774">read each step</text>
+<path d="M228 206 H283 V145 H334" fill="none" stroke="#406184" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M228 273 H283 V363 H334" fill="none" stroke="#406184" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="338" y="76" width="326" height="196" rx="14" fill="#e5f5eb" stroke="#7bb596" stroke-width="2"/>
+<text x="501" y="110" font-family="Arial,sans-serif" font-size="23" font-weight="bold" text-anchor="middle" fill="#25553f">Actor π(a | o)</text>
+<rect x="367" y="127" width="83" height="60" rx="8" fill="white" stroke="#9bc5ac"/><text x="408" y="153" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" fill="#2c5542">Dense</text><text x="408" y="174" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c5542">64</text>
+<rect x="467" y="127" width="83" height="60" rx="8" fill="white" stroke="#9bc5ac"/><text x="508" y="153" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" fill="#2c5542">Dense</text><text x="508" y="174" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c5542">64</text>
+<rect x="568" y="127" width="75" height="60" rx="8" fill="#c0e5cd" stroke="#79aa8a"/><text x="606" y="148" font-family="Arial,sans-serif" font-size="13" text-anchor="middle" fill="#25553f">Mean μ</text><text x="606" y="171" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#25553f">1</text>
+<path d="M450 157 H467 M550 157 H568" stroke="#548268" stroke-width="2.5"/>
+<text x="501" y="217" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" fill="#2c5542">Tanh activations; learnable log σ</text>
+<text x="501" y="245" font-family="Arial,sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#25553f">4 → 64 → 64 → 1</text>
+<rect x="338" y="312" width="326" height="170" rx="14" fill="#ece7fb" stroke="#ab99d3" stroke-width="2"/>
+<text x="501" y="345" font-family="Arial,sans-serif" font-size="23" font-weight="bold" text-anchor="middle" fill="#514174">Critic V(o)</text>
+<rect x="370" y="365" width="82" height="53" rx="8" fill="white" stroke="#bbabe1"/><text x="411" y="397" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#514174">64</text>
+<rect x="469" y="365" width="82" height="53" rx="8" fill="white" stroke="#bbabe1"/><text x="510" y="397" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#514174">64</text>
+<rect x="570" y="365" width="72" height="53" rx="8" fill="#d4c7ee" stroke="#a594c5"/><text x="606" y="397" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#514174">1</text>
+<path d="M452 391 H469 M551 391 H570" stroke="#8066b6" stroke-width="2.5"/>
+<text x="501" y="453" font-family="Arial,sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#514174">4 → 64 → 64 → 1</text>
+<path d="M664 173 H745" stroke="#406184" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M664 393 H745" stroke="#406184" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="748" y="108" width="335" height="134" rx="14" fill="#fff0db" stroke="#d4ad70" stroke-width="2"/>
+<text x="915" y="142" font-family="Arial,sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#765021">Distribution N(μ, σ)</text>
+<text x="915" y="174" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#765021">sample a ∈ ℝ; clip to [−1,1]</text>
+<text x="915" y="201" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#765021">MuJoCo force = 20 × a newtons</text>
+<rect x="748" y="340" width="335" height="110" rx="14" fill="#f4effc" stroke="#ab99d3" stroke-width="2"/>
+<text x="915" y="374" font-family="Arial,sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#514174">Predicted return V(o)</text>
+<text x="915" y="404" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#514174">Used to calculate advantages</text>
+<text x="915" y="427" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#514174">during PPO training</text>
+<rect x="339" y="504" width="744" height="43" rx="9" fill="#244e76"/>
+<text x="711" y="532" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="white">Rewards → advantage estimates → PPO clipped loss → update both networks</text>
+<text x="26" y="528" font-family="Arial,sans-serif" font-size="14" fill="#4b6986">TRAINING</text>
+</svg>
